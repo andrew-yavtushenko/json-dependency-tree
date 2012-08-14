@@ -1,5 +1,5 @@
 (function() {
-	var all, dep, deps, tree, key, left, mods, _i, _len, uml;
+	var all, dep, deps, tree, key, left, mods, _i, _len, uml, top, count;
 
 	tree = {
 	  "action/action": [],
@@ -94,20 +94,26 @@
 	};
 
 
-	Joint.paper("myfsa", 5000, 800);  /*(id or HTMLElement, width, height)*/
+	Joint.paper("myfsa", 1600, 4000);  /*(id or HTMLElement, width, height)*/
 	uml = Joint.dia.uml;
 	mods = {};
 	all = [];
 	left = 10;
+	top = 20;
+	count = 0;
 
 	for (key in tree) {
 	  deps = tree[key];
 	  //if (tree.hashOwnProperty(key)) {
+        if (count % 10 === 0) {
+          top += 70;
+          left = 10;
+        }
 		mods[key] = {
 		  cls: uml.Class.create({
 		    rect: {
 		      x: left,
-		      y: 20,
+		      y: top,
 		      width: 100,
 		      height: 50
 		    },
@@ -122,7 +128,9 @@
 		  })
 		};
 		all.push(mods[key].cls);
-		left += 110;
+		left += 50;
+		top += 20;
+		count += 1;
 	  //}
 	}
 
