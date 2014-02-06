@@ -2,7 +2,259 @@
 	var all, dep, deps, tree, key, left, mods, _i, _len, uml, top, count;
 
 	Joint.paper("myfsa", 1600, 4000);
-	tree = {"action/action":[],"action/alias":[],"action/authenticate":["action/decorator","registry"],"action/base":["action/process"],"action/binding":["jquery","action/action"],"action/controller":["action/action","action/resolver","action/manager","helpers/message","registry","helpers/util"],"action/decorator":["action/process"],"action/fields":["action/decorator","helpers/util"],"action/hooks":["action/decorator","helpers/bindings"],"action/manager":["action/action","action/authenticate","action/fields","action/runtimes","action/validate","action/targets","action/hooks","action/state","action/base"],"action/process":[],"action/resolver":["jquery","commands/default","config","registry","action/alias","nls/app"],"action/runtimes":["action/decorator","helpers/runtimes"],"action/state":["action/decorator","registry"],"action/targets":["action/decorator","helpers/locate"],"action/validate":["jquery","action/decorator","nls/app","jquery.validate"],"app":["jquery","widgets/controller","request/manager","request/controller"],"binding/iterator":[],"bootstrap":["compat"],"CoffeeScript":[],"commands/command":["jquery"],"commands/default":["commands/command","helpers/message"],"commands/populate":["commands/command","action/action","action/manager","helpers/data","helpers/populate","nls/app","registry"],"commands/set":["commands/command","helpers/runtimes","helpers/dom"],"commands/toggle":["commands/command"],"commands/trigger":["jquery","commands/command","nls/app"],"compat":[],"config":["helpers/singleton"],"cs":["CoffeeScript"],"helpers/application":["jquery","registry","config","nls/app"],"helpers/bindings":["jquery","action/binding","binding/iterator","registry"],"helpers/cookies":["jquery","jquery.cookie","jquery.md5"],"helpers/data":["jquery","registry","config","helpers/storage","helpers/runtimes","nls/app","jquery.md5"],"helpers/dnd":["jquery","action/action","helpers/populate","jquery-ui"],"helpers/guid":[],"helpers/lightbox":["jquery","jquery.colorbox"],"helpers/message":["jquery","nls/app","handlebars"],"helpers/populate":["jquery","helpers/util","helpers/runtimes","helpers/dom","action/action","helpers/view"],"helpers/qs":["helpers/router"],"helpers/router":[],"helpers/singleton":[],"helpers/view":["jquery","registry","config","handlebars"],"registry":["helpers/singleton"],"request/base":["request/process"],"request/capabilities":["request/decorator","modernizr","nls/app"],"request/controller":["request/resolver","helpers/application","registry","nls/app"],"request/decorator":["request/process"],"request/manager":["request/request","request/visit","request/session","request/capabilities","request/querystring","request/base"],"request/process":[],"request/querystring":["jquery","request/decorator","config","helpers/qs","helpers/storage"],"request/request":[],"request/resolver":["jquery","views/default","config"],"request/session":["request/decorator","helpers/cookies","registry","config","nls/app"],"request/visit":["request/decorator","helpers/guid","helpers/cookies","registry"],"views/default":["views/view","helpers/view","helpers/message"],"views/index":["views/view","helpers/view","helpers/message"],"views/view":[],"widgets/aggregate":["widgets/list","widgets/factory","widgets/iterator"],"widgets/controller":["jquery","registry","widgets/subject","widgets/aggregate"],"widgets/factory":["widgets/widget","widgets/widget_1","widgets/widget_2","widgets/widget_8","widgets/widget_9","widgets/widget_14","widgets/widget_22"],"widgets/iterator":["widgets/list"],"widgets/list":[],"widgets/subject":["widgets/list","widgets/iterator"],"widgets/widget":["jquery","action/action","action/manager","action/controller"],"widgets/widget_1":["widgets/widget","helpers/data","helpers/populate","nls/app","helpers/dnd"],"widgets/widget_14":["widgets/widget","helpers/data","helpers/populate","nls/app","helpers/dnd"],"widgets/widget_2":["jquery","widgets/widget","helpers/view","nls/app","helpers/dnd"],"widgets/widget_22":["jquery","widgets/widget","config","helpers/lightbox","helpers/data","nls/app","jquery.colorbox","jquery.uploadify","sprintf"],"widgets/widget_8":["widgets/widget"],"widgets/widget_9":["jquery","widgets/widget","jquery.blockui"],"handlebars":[],"helpers/dom":["jquery","helpers/util","helpers/message","nls/app","action/action","helpers/locate"],"helpers/locate":["jquery","nls/app","helpers/message"],"helpers/runtimes":["jquery","helpers/util","registry","config","helpers/dom","helpers/locate","config","sprintf"],"helpers/storage":["jquery","config","modernizr","jquery.md5"],"helpers/util":["jquery"],"i18n":["module"],"nls/app":[],"jquery":[],"jquery-ui":["jquery"],"jquery.blockui":["jquery"],"jquery.colorbox":["jquery"],"jquery.cookie":["jquery"],"jquery.md5":["jquery"],"jquery.uploadify":["jquery","swfobject"],"jquery.validate":["jquery"],"modernizr":[],"sprintf":[],"swfobject":[]};
+	tree = {
+    'Item': [],
+    'Cache': [],
+    'TranscodableItem': [],
+    'JavaHttpClient': [],
+    'MediaTypeFactory': [
+      'apiSwitcher.apis',
+      'NoopFoldersAdapter',
+      'NoopPrivateMediaAdapter',
+      'Urls',
+      'Item',
+      'TranscodableItem'
+    ],
+    'Conductor': ['MediaTypeFactory'],
+    'Urls': [],
+    'NoopFoldersAdapter': [],
+    'NoopPrivateMediaAdapter': [],
+    'OwnMediaAdapter': ['MediaTypeFactory'],
+    'NoopPublicMediaAdapter': [],
+    'UploadAdapter': ['MediaTypeFactory'],
+    'Folder': [],
+    'ItemFromStaticResponse': ['MediaTypeFactory'],
+    'Aviary': [
+      'UploadsFileCollection',
+      'i18n'
+    ],
+    'GetUploadsFileHandlers': [],
+    'UploadsFile': [
+      'GetUploadsFileHandlers',
+      'HttpErrorInterceptor'
+    ],
+    'ItemRepository': [
+      'OwnMediaAdapter',
+      'Timer',
+      'OOPEventNotifier'
+    ],
+    'FolderRepository': [
+      'OwnMediaAdapter',
+      'Timer',
+      'OOPEventNotifier'
+    ],
+    'moveItems': ['OwnMediaAdapter'],
+    'addFolder': [
+      'OwnMediaAdapter',
+      'OOPEventNotifier'
+    ],
+    'renameFolder': [
+      'OwnMediaAdapter',
+      'CloseUploadGuard'
+    ],
+    'removeFolder': [
+      'OwnMediaAdapter',
+      'OOPEventNotifier'
+    ],
+    'removeItem': ['OwnMediaAdapter'],
+    'removeItemCollection': ['removeItem'],
+    'removeFolderWithItems': [
+      'ItemRepository',
+      'removeFolder',
+      'removeItem',
+      'CloseUploadGuard'
+    ],
+    'chooseItem': [
+      'SendsItemsToProtocol',
+      'OOPEventNotifier'
+    ],
+    'SelectedItemsFactory': [],
+    'SelectedItems': ['SelectedItemsFactory'],
+    'AllItemsSelection': ['SelectedItems'],
+    'FilesToUpload': [
+      'UploadsFileCollection',
+      'FlashUploader',
+      'generateUUID'
+    ],
+    'DndHelper': [],
+    'notifyAndReject': [],
+    'generateUUID': [],
+    'generateUploadSessionId': [],
+    'UploadsFileCollection': [
+      'UploadAdapter',
+      'MediaTypeFactory',
+      'ItemFromStaticResponse',
+      'allSettled',
+      'generateUploadSessionId',
+      'OOPEventNotifier',
+      'Settings'
+    ],
+    'ProtocolItemMapper': [],
+    'SendsItemsToProtocol': [
+      'Protocol',
+      'ProtocolItemMapper'
+    ],
+    'SendsItemsToProtocol': [
+      'Protocol',
+      'ProtocolItemMapper'
+    ],
+    'FeatureDetection': ['Timer'],
+    'EventNotifier': ['OOPEventNotifier'],
+    'notifyHelpers': [
+      'EventNotifier',
+      'Timer'
+    ],
+    'OOPEventNotifier': ['Urls'],
+    'ErrorNotifier': ['Urls'],
+    'HttpErrorInterceptor': ['ErrorNotifier'],
+    'Settings': [
+      'MediaTypeFactory',
+      'SelectedItemsFactory',
+      'Urls',
+      'ProtocolItemMapper',
+      'Conductor',
+      'externalServicesServicesInitializer'
+    ],
+    'i18n': [],
+    'uiNotifier': [],
+    'NotificationSubscriber': [
+      'uiNotifier',
+      'i18n',
+      'addFolder',
+      'removeFolder',
+      'UploadsFileCollection',
+      'ItemRepository',
+      'FolderRepository'
+    ],
+    'Protocol': [],
+    'BuildsPreview133px': [],
+    'CloseUploadGuard': [],
+    'VerifyCORSWorks': [
+      'Urls',
+      'FeatureDetection'
+    ],
+    'NotifyCriticalFail': [
+      'ErrorNotifier',
+      'Protocol'
+    ],
+    'FlashUploader': [
+      'i18n',
+      'OwnMediaAdapter',
+      'OOPEventNotifier'
+    ],
+    'StaticPublicMediaAdapter': [
+      'Urls',
+      'MediaTypeFactory'
+    ],
+    'StaticPublicMediaRepository': [
+      'StaticPublicMediaAdapter',
+      'notifyAndReject'
+    ],
+    'ApiPublicMediaRepository': [
+      'Urls',
+      'Settings',
+      'MediaTypeFactory',
+      'i18n',
+      'OOPEventNotifier'
+    ],
+    'allSettled': [
+      'UrlLocator',
+      'renameItem',
+      'OwnMediaAdapter',
+      'notifyAndReject'
+    ],
+    'GetTranscodedFile': [
+      'MediaTypeFactory',
+      'Settings'
+    ],
+    'externalConnection': [],
+    'ExternalServicesFactory': [
+      'allSettled',
+      'Token',
+      'externalConnection',
+      'MediaTypeFactory',
+      'Folder'],
+    'initialize': [
+      'EventNotifier',
+      'NotifyCriticalFail',
+      'Protocol',
+      'Settings',
+      'ErrorNotifier',
+      'VerifyCORSWorks',
+      'Timer',
+      'UrlLocator'
+    ],
+    'ConductorCtrlRoot': ['Conductor'],
+    'ConductorCtrlPublicMedia': ['Conductor'],
+    'SettingsCtrl': [
+      'Conductor',
+      'MediaTypeFactory'
+    ],
+    'FoldersCtrlEditItem': [
+      'Aviary',
+      'FolderRepository',
+      'renameItem'
+    ],
+    'FoldersCtrlSelection': ['SelectedItems'],
+    'FoldersCtrlUpload': [
+      'UploadsFileCollection',
+      'BuildsPreview133px',
+      'FilesToUpload',
+      'i18n',
+      'MediaTypeFactory',
+      'FlashUploader'
+    ],
+    'FoldersCtrlShow': [
+      'EventNotifier',
+      'removeItem',
+      'FolderRepository',
+      'ItemRepository',
+      'SelectedItems',
+      'DndHelper',
+      'i18n',
+      'Protocol',
+      'ProtocolItemMapper',
+      'FeatureDetection',
+      'AllItemsSelection',
+      'UploadsFileCollection',
+      'FlashUploader',
+      'GetTranscodedFile',
+      'externalServicesservices',
+      'notifyHelpers'
+    ],
+    'FoldersCtrlRemove': [
+      'EventNotifier',
+      'removeItem',
+      'removeItemCollection',
+      'SelectedItems',
+      'i18n'
+    ],
+    'FoldersCtrlUpdate': ['renameItem'],
+    'FoldersCtrlRename': [
+      'ItemRepository',
+      'renameFolder'
+    ],
+    'FoldersCtrlMove': ['SelectedItems'],
+    'FoldersCtrlList': [
+      'FolderRepository',
+      'removeFolderWithItems',
+      'removeFromFolder',
+      'moveItems',
+      'addFolder',
+      'CloseUploadGuard'
+    ],
+    'FoldersCtrlTranscode': [
+      'ItemRepository',
+      'GetTranscodedFile'
+    ],
+    'publicMedia.StaticPublicMediaCtrl.Root': ['EventNotifier', 'Timer', 'StaticPublicMediaRepository', 'SelectedItems', 'Protocol', 'ProtocolItemMapper'],
+    'publicMedia.BreadcrumbsDynamicPublicMediaCtrl.Root': ['ApiPublicMediaRepository', 'SelectedItems', 'chooseItem'],
+    'publicMedia.DynamicPublicMediaCtrl.Root': ['ApiPublicMediaRepository', 'SelectedItems', 'chooseItem'],
+    'NotificationsCtrl': ['uiNotifier'],
+    'ProtocolCtrl.Items': ['EventNotifier', 'Protocol', 'SelectedItems', 'ProtocolItemMapper', 'CloseUploadGuard', 'i18n'],
+    'ProtocolCtrl.Cancel': ['EventNotifier', 'Protocol', 'CloseUploadGuard'],
+    'ProtocolCtrl.Help': ['EventNotifier', 'Protocol']
+  }
 	uml = Joint.dia.uml;
 	mods = {};
 	all = [];
