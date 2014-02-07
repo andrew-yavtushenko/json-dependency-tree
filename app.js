@@ -1,8 +1,9 @@
 (function() {
 	var all, dep, deps, tree, key, left, mods, _i, _len, uml, top, count;
 
-	Joint.paper("myfsa", 1600, 4000);
-	tree = {
+	Joint.paper("myfsa", 8000, 8000);
+	tree = 
+  {
     'Item': [],
     'Cache': [],
     'TranscodableItem': [],
@@ -254,7 +255,7 @@
     'ProtocolCtrl.Items': ['EventNotifier', 'Protocol', 'SelectedItems', 'ProtocolItemMapper', 'CloseUploadGuard', 'i18n'],
     'ProtocolCtrl.Cancel': ['EventNotifier', 'Protocol', 'CloseUploadGuard'],
     'ProtocolCtrl.Help': ['EventNotifier', 'Protocol']
-  }
+  };
 	uml = Joint.dia.uml;
 	mods = {};
 	all = [];
